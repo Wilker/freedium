@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Freedium</title>
+</head>
+<body>
+<h1>Freedium</h1>
+<h2>Free medium paywall</h2>
+URL: <input type="text" id="myText">
+<button type="button" onclick="loadDoc()">Get Free Link</button>
+<div id="response">
+    <a href="https://www.w3schools.com/" id="link"></a>
+</div>
+</body>
+
+<script>function loadDoc() {
+    var url = document.getElementById("myText").value;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("link").setAttribute("href", this.responseText);
+            document.getElementById("link").innerHTML = "Free link";
+        }
+    };
+    xhttp.open("GET", "https://us-central1-reliable-bruin-140803.cloudfunctions.net/freedium?url=+" + url, true);
+    xhttp.send();
+}</script>
+</html>
